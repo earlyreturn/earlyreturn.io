@@ -1,22 +1,32 @@
 /* eslint react/destructuring-assignment: 0 */
+// shadowing https://git.io/JkHMB
+
 import React from "react"
+// import { useColorMode } from "theme-ui"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import loadable from "@loadable/component"
-import theme from "prism-react-renderer/themes/nightOwl"
+import lightTheme from "prism-react-renderer/themes/github"
 
-import Copy from "./copy"
-import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
-import { Language } from "../types"
+import Copy from "@lekoarts/gatsby-theme-minimal-blog/src/components/copy"
+import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config"
+
+// add additional syntax highlightings
+import Prism from "prism-react-renderer/prism";
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-swift");
+
+// edit custom Themes
+lightTheme.plain.backgroundColor = "#F3F5F8"
 
 type CodeProps = {
   codeString: string
-  language: Language
+  language: string
   noLineNumbers?: boolean
   metastring?: string
   [key: string]: any
 }
 
-function getParams(className = ``) {
+function getParams(className = ``): any[] {
   const [lang = ``, params = ``] = className.split(`:`)
 
   return [
@@ -81,12 +91,12 @@ const Code = ({
   if (props[`react-live`]) {
     return (
       <div className="react-live-wrapper">
-        <LazyLiveProvider code={codeString} noInline theme={theme} showCopyButton={showCopyButton} />
+        <LazyLiveProvider code={codeString} noInline theme={lightTheme} showCopyButton={showCopyButton} />
       </div>
     )
   }
   return (
-    <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
+    <Highlight {...defaultProps} code={codeString} language={language} theme={lightTheme} >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <React.Fragment>
           {title && (
