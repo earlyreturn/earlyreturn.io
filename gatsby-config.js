@@ -4,6 +4,7 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
+    siteTitle: "early return",
     siteTitleAlt: `Minimal Blog - Gatsby Theme`,
   },
   plugins: [
@@ -17,10 +18,6 @@ module.exports = {
             slug: `/blog`,
           },
           {
-            title: `Somewhere`,
-            slug: `/something`,
-          },
-          {
             title: `About`,
             slug: `/about`,
           },
@@ -28,11 +25,11 @@ module.exports = {
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            url: `https://twitter.com/earlyreturnio`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `RSS`,
+            url: `https://earlyreturn.io/rss.xml`,
           },
         ],
       },
