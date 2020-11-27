@@ -12,11 +12,16 @@ const code = {
     padding: (t: any) => `calc(${t.space[2]} + 10px) !important`,
     backgroundColor: tint(`primary`, 0.7),
   },
+  ".code-copy-button": {
+    opacity: 0,
+    transition: `opacity .1s`
+  },
   ".prism-code": {
     fontSize: [1, 1, 2],
-    padding: `2rem 1rem 1rem 1rem`,
+    padding: `1rem 1rem 1rem 1rem`, // change to `2rem 1rem 1rem 1rem` for code file-type flags
     webkitOverflowScrolling: `touch`,
     backgroundColor: `transparent`,
+    borderRadius: 4,
     minWidth: `100%`,
     mb: 0,
     mt: 0,
@@ -26,6 +31,9 @@ const code = {
         pl: 3,
       },
     },
+    '&:hover .code-copy-button': {
+      opacity: 1,
+    }
   },
   ".gatsby-highlight[data-language=''], .gatsby-highlight[data-language='noLineNumbers']": {
     ".prism-code": {
@@ -58,6 +66,7 @@ const code = {
       minWidth: `100%`,
     },
     'pre[class*="language-"]:before': {
+      display: `none`, // display for code file-type flags
       bg: `white`,
       borderRadius: `0 0 0.25rem 0.25rem`,
       color: `black`,
@@ -162,7 +171,13 @@ const code = {
     },
     'pre[class~="language-swift"]:before': {
       content: `"swift"`,
-      background: `#ffa8df`
+      background: `#ee4731`,
+      color: `white`
+    },
+    'pre[class~="language-rust"]:before': {
+      content: `"rust"`,
+      background: `#ee4100`,
+      color: `white`
     }
   },
   '.gatsby-highlight > code[class*="language-"], .gatsby-highlight > pre[class=*="language-"]': {

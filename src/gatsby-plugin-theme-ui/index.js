@@ -1,7 +1,7 @@
 // shadowing https://git.io/JkHSq
-import { merge } from "theme-ui";
-import { transparentize } from "@theme-ui/color";
-import { tailwind } from "@theme-ui/presets";
+import { merge } from 'theme-ui'
+import { transparentize } from '@theme-ui/color'
+import { tailwind } from '@theme-ui/presets'
 
 const theme = merge(tailwind, {
   initialColorModeName: `light`,
@@ -26,6 +26,7 @@ const theme = merge(tailwind, {
     },
   },
   fonts: {
+    logo: `"IBM Plex Mono", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
     body: `"IBM Plex Sans", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
   },
   styles: {
@@ -43,8 +44,8 @@ const theme = merge(tailwind, {
       fontSize: [1, 1, 2],
       letterSpacing: `-0.003em`,
       lineHeight: `body`,
-      "--baseline-multiplier": 0.179,
-      "--x-height-multiplier": 0.35,
+      '--baseline-multiplier': 0.179,
+      '--x-height-multiplier': 0.35,
       wordBreak: `break-word`,
     },
     ul: {
@@ -52,8 +53,8 @@ const theme = merge(tailwind, {
         fontSize: [1, 1, 2],
         letterSpacing: `-0.003em`,
         lineHeight: `body`,
-        "--baseline-multiplier": 0.179,
-        "--x-height-multiplier": 0.35,
+        '--baseline-multiplier': 0.179,
+        '--x-height-multiplier': 0.35,
       },
     },
     ol: {
@@ -61,8 +62,8 @@ const theme = merge(tailwind, {
         fontSize: [1, 1, 2],
         letterSpacing: `-0.003em`,
         lineHeight: `body`,
-        "--baseline-multiplier": 0.179,
-        "--x-height-multiplier": 0.35,
+        '--baseline-multiplier': 0.179,
+        '--x-height-multiplier': 0.35,
       },
     },
     h1: {
@@ -146,8 +147,11 @@ const theme = merge(tailwind, {
       color: `heading`,
     },
   },
+  logo: {
+    fontFamily: `logo`,
+  },
   copyButton: {
-    backgroundColor: transparentize(`primary`, 0.4),
+    backgroundColor: transparentize(`secondary`, 0.5),
     border: `none`,
     color: `gray.2`,
     cursor: `pointer`,
@@ -155,18 +159,19 @@ const theme = merge(tailwind, {
     fontFamily: `body`,
     letterSpacing: `0.025rem`,
     transition: `default`,
-    "&[disabled]": {
+    '&[disabled]': {
+      bg: `secondary`,
       cursor: `not-allowed`,
     },
-    ":not([disabled]):hover": {
-      bg: `primary`,
+    ':hover': {
+      bg: `secondary`,
       color: `white`,
     },
     position: `absolute`,
-    top: 0,
-    right: 0,
+    top: `-2px`,
+    right: `5px`,
     zIndex: 1,
-    borderRadius: `0 0 0 0.25rem`,
+    borderRadius: `0 0 0.25rem 0.25rem`,
     padding: `0.25rem 0.6rem`,
   },
   dividers: {
@@ -187,11 +192,11 @@ const theme = merge(tailwind, {
     secondary: {
       color: `secondary`,
       textDecoration: `none`,
-      ":hover": {
+      ':hover': {
         color: `heading`,
         textDecoration: `underline`,
       },
-      ":focus": {
+      ':focus': {
         color: `heading`,
       },
     },
@@ -200,6 +205,6 @@ const theme = merge(tailwind, {
       color: `text`,
     },
   },
-});
+})
 
-export default theme;
+export default theme

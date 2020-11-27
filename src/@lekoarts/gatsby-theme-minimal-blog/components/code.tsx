@@ -1,11 +1,12 @@
 /* eslint react/destructuring-assignment: 0 */
 // shadowing https://git.io/JkHMB
-
 import React from "react"
-// import { useColorMode } from "theme-ui"
+import { useColorMode } from "theme-ui"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import loadable from "@loadable/component"
-import lightTheme from "prism-react-renderer/themes/github"
+
+import lightTheme from "../../../themes/github"
+import darkTheme from "../../../themes/oceanicNext"
 
 import Copy from "@lekoarts/gatsby-theme-minimal-blog/src/components/copy"
 import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config"
@@ -13,10 +14,12 @@ import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/
 // add additional syntax highlightings
 import Prism from "prism-react-renderer/prism";
 (typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-rust");
 require("prismjs/components/prism-swift");
 
 // edit custom Themes
 lightTheme.plain.backgroundColor = "#F3F5F8"
+darkTheme.plain.backgroundColor = "#181A26"
 
 type CodeProps = {
   codeString: string
@@ -82,21 +85,24 @@ const Code = ({
   ...props
 }: CodeProps) => {
   const { showLineNumbers, showCopyButton } = useMinimalBlogConfig()
+  const colorMode = useColorMode()[0]
 
   const [language, { title = `` }] = getParams(blockClassName)
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
   const hasLineNumbers = !noLineNumbers && language !== `noLineNumbers` && showLineNumbers
 
+  const theme = colorMode === 'light' ? lightTheme : darkTheme;
+
   if (props[`react-live`]) {
     return (
       <div className="react-live-wrapper">
-        <LazyLiveProvider code={codeString} noInline theme={lightTheme} showCopyButton={showCopyButton} />
+        <LazyLiveProvider code={codeString} noInline theme={theme} showCopyButton={showCopyButton} />
       </div>
     )
   }
   return (
-    <Highlight {...defaultProps} code={codeString} language={language} theme={lightTheme} >
+    <Highlight {...defaultProps} code={codeString} language={language} theme={theme} >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <React.Fragment>
           {title && (
@@ -104,7 +110,7 @@ const Code = ({
               <div>{title}</div>
             </div>
           )}
-          <div className="gatsby-highlight" data-language={language}>
+          <div className="gatsby-highlight" data-language={language} style={{borderRadius: 6}}>
             <pre className={className} style={style} data-linenumber={hasLineNumbers}>
               {showCopyButton && <Copy content={codeString} fileName={title} />}
               <code className={`language-${language}`}>

@@ -1,9 +1,8 @@
 ↩️ Curated thoughts on returning early.
 
-```language-swift
-let someString = "Some string literal value"
-var emptyString = ""
-// String interpolation
-let multiplier = 3
-"\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+```rust
+let first_number = match first_number_str.parse::<i32>() {
+    Ok(first_number)  => first_number,
+    Err(e) => return Err(e),
+};
 ```
