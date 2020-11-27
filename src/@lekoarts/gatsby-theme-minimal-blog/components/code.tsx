@@ -1,6 +1,8 @@
-/* eslint react/destructuring-assignment: 0 */
+// @jsx jsx
+// eslint react/destructuring-assignment: 0
 // shadowing https://git.io/JkHMB
 import React from "react"
+import { jsx } from "theme-ui"
 import { useColorMode } from "theme-ui"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import loadable from "@loadable/component"
@@ -110,10 +112,10 @@ const Code = ({
               <div>{title}</div>
             </div>
           )}
-          <div className="gatsby-highlight" data-language={language} style={{borderRadius: 6}}>
-            <pre className={className} style={style} data-linenumber={hasLineNumbers}>
+          <div className="gatsby-highlight" data-language={language} style={{borderRadius: 6, margin: `1em 0`}}>
+            <pre className={className} style={style} data-linenumber={hasLineNumbers} >
               {showCopyButton && <Copy content={codeString} fileName={title} />}
-              <code className={`language-${language}`}>
+              <code className={`language-${language}`} sx={{fontFamily: `mono`}} style={{fontSize:`18px`}}>
                 {tokens.map((line, i) => {
                   const lineProps = getLineProps({ line, key: i })
 

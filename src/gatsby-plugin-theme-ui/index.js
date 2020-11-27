@@ -12,6 +12,7 @@ const theme = merge(tailwind, {
     toggleIcon: tailwind.colors.gray[8],
     heading: tailwind.colors.black,
     divide: tailwind.colors.gray[4],
+    line: tailwind.colors.gray[3],
     modes: {
       dark: {
         text: tailwind.colors.gray[4],
@@ -22,12 +23,14 @@ const theme = merge(tailwind, {
         heading: tailwind.colors.white,
         divide: tailwind.colors.gray[8],
         muted: tailwind.colors.gray[8],
+        line: tailwind.colors.gray[7],
       },
     },
   },
   fonts: {
     logo: `"IBM Plex Mono", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
     body: `"IBM Plex Sans", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
+    mono: `"SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono", Menlo, Consolas, monospace`,
   },
   styles: {
     root: {
@@ -132,6 +135,11 @@ const theme = merge(tailwind, {
     hr: {
       mx: 0,
     },
+    // custom css
+    '.header-title::after': {
+      content: 'daniel',
+      backgroundColor: `red`,
+    },
   },
   layout: {
     container: {
@@ -146,9 +154,6 @@ const theme = merge(tailwind, {
       lineHeight: `heading`,
       color: `heading`,
     },
-  },
-  logo: {
-    fontFamily: `logo`,
   },
   copyButton: {
     backgroundColor: transparentize(`secondary`, 0.5),
