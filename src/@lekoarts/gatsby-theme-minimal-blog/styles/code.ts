@@ -160,10 +160,10 @@ const code = {
       content: `'diff'`,
       background: `#e6ffed`,
     },
-    "pre[class~='language-swift']:before": {
-      content: `'swift'`,
-      background: `#e6ffed`,
-    },
+    'pre[class~="language-swift"]:before': {
+      content: `"swift"`,
+      background: `#ffa8df`
+    }
   },
   '.gatsby-highlight > code[class*="language-"], .gatsby-highlight > pre[class=*="language-"]': {
     wordSpacing: `normal`,
