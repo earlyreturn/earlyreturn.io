@@ -1,11 +1,10 @@
 // @jsx jsx
 // shadowing https://git.io/Jk5Ph
-import { jsx, Heading, Link as TLink } from 'theme-ui'
+import { Heading, Link as TLink } from 'theme-ui'
 import { Link } from 'gatsby'
 import { Flex } from '@theme-ui/components'
 import Layout from './layout'
 import Listing from '@lekoarts/gatsby-theme-minimal-blog/src/components/listing'
-import useSiteMetadata from '@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata'
 import useMinimalBlogConfig from '@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config'
 import replaceSlashes from '@lekoarts/gatsby-theme-minimal-blog/src/utils/replaceSlashes'
 import SEO from '@lekoarts/gatsby-theme-minimal-blog/src/components/seo'
@@ -28,11 +27,10 @@ type PostsProps = {
 
 const Blog = ({ posts }: PostsProps) => {
   const { tagsPath, basePath } = useMinimalBlogConfig()
-  const { siteTitle } = useSiteMetadata()
 
   return (
     <Layout>
-      <SEO title={`${siteTitle} Posts`} />
+      <SEO title="Posts" />
       <Flex
         sx={{
           alignItems: `center`,
