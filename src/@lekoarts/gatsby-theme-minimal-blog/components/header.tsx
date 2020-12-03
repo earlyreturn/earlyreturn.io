@@ -19,8 +19,17 @@ const Header = () => {
 
   return (
     <header>
-      <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
+      <Flex>
         <HeaderTitle />
+
+        <span
+          sx={{
+            marginLeft: 'auto',
+          }}
+        >
+          <button>twitter</button>
+          <button>rss</button>
+        </span>
         <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
       </Flex>
       <div
