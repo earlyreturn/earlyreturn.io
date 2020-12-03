@@ -1,6 +1,6 @@
 // @jsx jsx
 // shadowing https://git.io/Jk5Ph
-import { Heading, Link as TLink } from 'theme-ui'
+import { jsx, Heading, Link as TLink } from 'theme-ui'
 import { Link } from 'gatsby'
 import { Flex } from '@theme-ui/components'
 import Layout from './layout'
